@@ -100,7 +100,7 @@ RUN LIBERICA_ARCH='' \
   &&    echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' > /etc/nsswitch.conf \
   &&    mkdir -p $LIBERICA_ROOT \
   &&    mkdir -p /tmp/java \
-  &&    RSUFFIX="-full";\
+  &&    RSUFFIX="-full" \
   &&    LIBERICA_BUILD_STR=${LIBERICA_BUILD:+"+${LIBERICA_BUILD}"} \
   &&    echo LIBERICA_BUILD_STR - ${LIBERICA_BUILD_STR} \
   &&    PKG="bellsoft-${LIBERICA_VARIANT}${LIBERICA_VERSION}${LIBERICA_BUILD_STR}-linux-${LIBERICA_ARCH}${RSUFFIX}.tar.gz" \
