@@ -57,7 +57,6 @@ ARG LIBERICA_VERSION=17
 ARG LIBERICA_BUILD=35
 ARG LIBERICA_VARIANT=jdk
 ARG LIBERICA_ROOT=/usr/lib/jvm/${LIBERICA_VARIANT}-${LIBERICA_VERSION}-bellsoft
-ARG LIBERICA_USE_LITE=0
 
 COPY --from=glibc-base /root/dest/ /
 
@@ -101,10 +100,7 @@ RUN LIBERICA_ARCH='' \
   &&    echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' > /etc/nsswitch.conf \
   &&    mkdir -p $LIBERICA_ROOT \
   &&    mkdir -p /tmp/java \
-  &&    RSUFFIX="" \
-  &&    if [ "$LIBERICA_USE_LITE" = "1" ]; then \
-          RSUFFIX="-lite";\
-        fi \
+        RSUFFIX="-full";\
   &&    LIBERICA_BUILD_STR=${LIBERICA_BUILD:+"+${LIBERICA_BUILD}"} \
   &&    echo LIBERICA_BUILD_STR - ${LIBERICA_BUILD_STR} \
   &&    PKG="bellsoft-${LIBERICA_VARIANT}${LIBERICA_VERSION}${LIBERICA_BUILD_STR}-linux-${LIBERICA_ARCH}${RSUFFIX}.tar.gz" \
